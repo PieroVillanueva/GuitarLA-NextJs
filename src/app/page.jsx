@@ -7,22 +7,30 @@ async function getGuitarrasyPosts() {
   const urlGuitarras = `${process.env.API_URL}/guitarras?populate=imagen`;
   const urlPosts = `${process.env.API_URL}/posts?populate=imagen`;
   const urlCurso = `${process.env.API_URL}/curso?populate=imagen`;
-  const [responseGuitarras, responsePosts, responseCurso] = await Promise.all([
-    fetch(urlGuitarras, { next: { revalidate: 0 } }),
-    fetch(urlPosts, { next: { revalidate: 0 } }),
-    fetch(urlCurso, { next: { revalidate: 0 } }),
-  ]);
-  const [{ data: guitarras }, { data: posts }, { data: curso }] =
+  const urlOferta = `${process.env.API_URL}/oferta?populate=imagen`;
+  const [responseGuitarras, responsePosts, responseCurso, responseOferta] =
     await Promise.all([
-      responseGuitarras.json(),
-      responsePosts.json(),
-      responseCurso.json(),
+      fetch(urlGuitarras, { next: { revalidate: 0 } }),
+      fetch(urlPosts, { next: { revalidate: 0 } }),
+      fetch(urlCurso, { next: { revalidate: 0 } }),
+      fetch(urlOferta, { next: { revalidate: 0 } }),
     ]);
-  return { guitarras, posts, curso };
+  const [
+    { data: guitarras },
+    { data: posts },
+    { data: curso },
+    { data: oferta },
+  ] = await Promise.all([
+    responseGuitarras.json(),
+    responsePosts.json(),
+    responseCurso.json(),
+    responseOferta.json(),
+  ]);
+  return { guitarras, posts, curso, oferta };
 }
 
 export default async function Home() {
-  const { guitarras, posts, curso } = await getGuitarrasyPosts();
+  const { guitarras, posts, curso, oferta } = await getGuitarrasyPosts();
   //console.log(curso);
   return (
     <>

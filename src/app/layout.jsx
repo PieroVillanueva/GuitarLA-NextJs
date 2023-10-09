@@ -16,8 +16,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body className={outfit.className}>
-        <Header />
-        <GlobalContextProvider> {children}</GlobalContextProvider>
+        <GlobalContextProvider>
+          <Header />
+          {children}
+        </GlobalContextProvider>
         <Footer />
       </body>
     </html>

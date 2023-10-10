@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "next": "13.5.4",
+    "nextjs-toploader": "^1.4.2",
     "react": "^18",
     "react-dom": "^18",
-    "react-responsive-carousel": "^3.2.23"
+    "react-responsive-carousel": "^3.2.23",
+    "sweetalert2": "^11.7.32"
   },
   "devDependencies": {
     "eslint": "^8",

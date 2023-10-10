@@ -77,3 +77,36 @@
     background-color: var(--primary);
     cursor: pointer ;
 }
+
+.btnIrCarrito{
+    background-color:var(--primary);
+    color: var(--white);
+    padding: .7rem 2rem;
+    box-shadow: none;
+    border-radius: 1rem;
+    border: none;
+    margin: 0 1rem;
+    transition-property: background-color;
+    transition: 300ms;
+    font-size: 1.5rem;
+}
+.btnSeguirComprando{
+    background-color:var(--black);
+    color: var(--white);
+    padding: .7rem 2rem;
+    box-shadow: none;
+    border-radius: 1rem;
+    border: none;
+    margin: 0;
+    transition-property: background-color;
+    transition: 300ms;
+    font-size:  1.5rem;
+}
+
+.btnIrCarrito:hover,.btnSeguirComprando:hover{
+    filter: brightness(85%);
+    cursor: pointer;    
+}
+.titulo{
+    font-size: 2rem;
+}

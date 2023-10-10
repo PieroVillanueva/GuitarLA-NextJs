@@ -1,18 +1,17 @@
 "use client";
 import styles from "../app/styles/guitarras.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GlobalContext } from "@/app/context/GlobalContext";
 import { useContext } from "react";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const FormularioGuitarra = ({ guitarra }) => {
+  const route = useRouter();
   const [cantidad, setCantidad] = useState(0);
   const { nombre, descripcion, imagen, precio } = guitarra[0].attributes;
   const { agregarCarrito, carrito } = useContext(GlobalContext);
-  /*
-  useEffect(() => {
-    console.log(carrito);
-  }, [carrito]);
-*/
+
   const handleSubmit = (e) => {
     e.preventDefault();
     //console.log(cantidad);
@@ -28,8 +27,33 @@ const FormularioGuitarra = ({ guitarra }) => {
       precio,
       cantidad,
     };
-    //console.log(guitarraSeleccionada);
     agregarCarrito(guitarraSeleccionada);
+
+    const alertConEstilos = Swal.mixin({
+      customClass: {
+        title: `styles.titulo`,
+        confirmButton: styles.btnIrCarrito,
+        cancelButton: styles.btnSeguirComprando,
+      },
+      buttonsStyling: false,
+    });
+    alertConEstilos
+      .fire({
+        title: "<strong>Agregado al Carrito</strong>",
+        icon: "success",
+        showCloseButton: true,
+        showCancelButton: true,
+        confirmButtonText: `<div>Ir a carrito</div> `,
+        cancelButtonText: "<div>Seguir comprando</div>",
+        width: 350,
+      })
+      .then((result) => {
+        if (result.isDenied) {
+          route.push("/tienda");
+        } else if (result.isConfirmed) {
+          route.push("/carrito");
+        }
+      });
   };
   return (
     <form className={styles.formulario} onSubmit={handleSubmit}>

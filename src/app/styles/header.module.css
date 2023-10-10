@@ -50,11 +50,12 @@
 .cart p{
     position: absolute;
     bottom: 1.2rem;
-    right: -1.4rem;
-
+    right: -0.9rem;
+    text-align: center;
     color: var(--black);
     background-color:var(--white);
     display: inline-block;
-    padding: 0.2rem 0.8rem;
+    height: 2rem;
+    width: 2rem;
     border-radius: 100%;
 }

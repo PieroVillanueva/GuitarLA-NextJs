@@ -18,17 +18,16 @@ const Carrusel = ({ ofertas }) => {
         justifyContent: "center",
       }}
     >
-      <div style={{ width: "min(1200px,95%)", marginTop: "4rem" }}>
+      <div className="contenedor" style={{ marginTop: "5rem" }}>
         <Carousel
           showThumbs={false}
           autoPlay={true}
           infiniteLoop={true}
           onClickItem={handleClick}
           showStatus={false}
-          height={500}
         >
           {ofertas?.map((oferta) => (
-            <div key={oferta.id}>
+            <div key={oferta.id} style={{ cursor: "pointer" }}>
               <Image
                 src={oferta.attributes.imagen.data.attributes.url}
                 width={1920}

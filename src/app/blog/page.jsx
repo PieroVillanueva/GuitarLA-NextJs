@@ -22,7 +22,7 @@ const Blog = async () => {
       <main className="contenedor">
         <h1 className="heading">Blog</h1>
         <div className={styles.grid}>
-          {posts.map((post) => (
+          {posts?.map((post) => (
             <Post key={post.id} post={post.attributes}></Post>
           ))}
         </div>

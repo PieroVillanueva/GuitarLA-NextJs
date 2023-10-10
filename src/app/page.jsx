@@ -41,7 +41,7 @@ export default async function Home() {
       <main className="contenedor">
         <h1 className="heading">Nuestra Colección</h1>
         <div className={styles.grid}>
-          {guitarras.map((guitarra) => (
+          {guitarras?.map((guitarra) => (
             <Guitarra key={guitarra.id} guitarra={guitarra.attributes} />
           ))}
         </div>
@@ -50,7 +50,7 @@ export default async function Home() {
       <section className="contenedor">
         <h2 className="heading">Blog</h2>
         <div className={styles.grid}>
-          {posts.map((post) => (
+          {posts?.map((post) => (
             <Post key={post.id} post={post.attributes}></Post>
           ))}
         </div>

@@ -33,7 +33,7 @@ const FormularioGuitarra = ({ guitarra }) => {
       customClass: {
         title: `styles.titulo`,
         confirmButton: styles.btnIrCarrito,
-        cancelButton: styles.btnSeguirComprando,
+        denyButton: styles.btnSeguirComprando,
       },
       buttonsStyling: false,
     });
@@ -42,16 +42,16 @@ const FormularioGuitarra = ({ guitarra }) => {
         title: "<strong>Agregado al Carrito</strong>",
         icon: "success",
         showCloseButton: true,
-        showCancelButton: true,
-        confirmButtonText: `<div>Ir a carrito</div> `,
-        cancelButtonText: "<div>Seguir comprando</div>",
+        showDenyButton: true,
+        confirmButtonText: `<div>Ir a carrito</div>`,
+        denyButtonText: `<div>Seguir comprando</div>`,
         width: 350,
       })
       .then((result) => {
-        if (result.isDenied) {
-          route.push("/tienda");
-        } else if (result.isConfirmed) {
+        if (result.isConfirmed) {
           route.push("/carrito");
+        } else if (result.isDenied) {
+          route.push("/tienda");
         }
       });
   };

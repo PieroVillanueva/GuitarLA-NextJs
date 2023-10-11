@@ -7,7 +7,6 @@ import GlobalContextProvider from "./context/GlobalContext";
 import NextTopLoader from "nextjs-toploader";
 
 const outfit = Outfit({ subsets: ["latin"] });
-
 export const metadata = {
   title: "GuitarLA - Inicio",
   description: "Venta de guitarras y Blog de Música",

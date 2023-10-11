@@ -8,9 +8,9 @@ import { useRouter } from "next/navigation";
 
 const FormularioGuitarra = ({ guitarra }) => {
   const route = useRouter();
-  const [cantidad, setCantidad] = useState(0);
-  const { nombre, descripcion, imagen, precio } = guitarra[0].attributes;
-  const { agregarCarrito, carrito } = useContext(GlobalContext);
+  const [cantidad, setCantidad] = useState(1);
+  const { nombre, imagen, precio } = guitarra[0].attributes;
+  const { agregarCarrito } = useContext(GlobalContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ const FormularioGuitarra = ({ guitarra }) => {
 
     const alertConEstilos = Swal.mixin({
       customClass: {
-        title: `styles.titulo`,
+        title: styles.titulo,
         confirmButton: styles.btnIrCarrito,
         denyButton: styles.btnSeguirComprando,
       },
@@ -58,8 +58,11 @@ const FormularioGuitarra = ({ guitarra }) => {
   return (
     <form className={styles.formulario} onSubmit={handleSubmit}>
       <label htmlFor="cantidad">Cantidad</label>
-      <select id="cantidad" onChange={(e) => setCantidad(+e.target.value)}>
-        <option value="0">--Seleccione--</option>
+      <select
+        id="cantidad"
+        onChange={(e) => setCantidad(+e.target.value)}
+        defaultValue={cantidad}
+      >
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
